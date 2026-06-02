@@ -49,20 +49,168 @@
         const questoesData = [
             {
                 "id": 1,
-                "titulo": "Qual padrão arquitetural é mais indicado para desacoplar a comunicação entre microsserviços de forma assíncrona?",
-                "opcoes": ["REST (HTTP)", "Event-Driven Architecture (EDA)", "gRPC", "Shared Database"],
-                "correta": 1 // Índice da resposta correta (0-based)
+                "titulo": "Qual tag HTML é semanticamente mais adequada para representar a navegação principal de um site?",
+                "opcoes": ["<div>", "<menu>", "<nav>", "<section>"],
+                "correta": 2
             },
             {
                 "id": 2,
-                "titulo": "No contexto de CI/CD, qual o papel principal da etapa de 'Continuous Deployment'?",
+                "titulo": "Em CSS, qual propriedade é utilizada para transformar um elemento em um container Flexbox?",
+                "opcoes": ["position: flex", "display: flex", "flex: true", "layout: flex"],
+                "correta": 1
+            },
+            {
+                "id": 3,
+                "titulo": "Qual é o objetivo principal do atributo 'alt' em uma imagem HTML?",
                 "opcoes": [
-                    "Compilar o código fonte automaticamente.",
-                    "Garantir que os testes unitários rodem a cada commit.",
-                    "Fazer o deploy automatizado em produção sem intervenção humana manual.",
-                    "Gerar relatórios de cobertura de código."
+                    "Melhorar a resolução da imagem",
+                    "Definir a largura da imagem",
+                    "Fornecer descrição para acessibilidade e falhas de carregamento",
+                    "Aplicar estilos CSS"
                 ],
                 "correta": 2
+            },
+            {
+                "id": 4,
+                "titulo": "Um desenvolvedor deseja capturar o clique de um botão utilizando JavaScript. Qual evento deve ser utilizado?",
+                "opcoes": ["onchange", "onsubmit", "onclick", "onfocus"],
+                "correta": 2
+            },
+            {
+                "id": 5,
+                "titulo": "Qual unidade CSS é mais indicada para criar layouts responsivos?",
+                "opcoes": ["px", "cm", "%", "pt"],
+                "correta": 2
+            },
+            {
+                "id": 6,
+                "titulo": "Qual método JavaScript é utilizado para selecionar um elemento pelo seu ID?",
+                "opcoes": [
+                    "querySelectorAll()",
+                    "getElementById()",
+                    "getElementsByClassName()",
+                    "findElement()"
+                ],
+                "correta": 1
+            },
+            {
+                "id": 7,
+                "titulo": "Em HTML5, qual elemento representa o conteúdo principal da página?",
+                "opcoes": ["<main>", "<article>", "<section>", "<body>"],
+                "correta": 0
+            },
+            {
+                "id": 8,
+                "titulo": "Ao utilizar CSS Grid, qual propriedade define o número de colunas do layout?",
+                "opcoes": [
+                    "grid-columns",
+                    "grid-layout",
+                    "grid-template-columns",
+                    "column-template"
+                ],
+                "correta": 2
+            },
+            {
+                "id": 9,
+                "titulo": "Qual das opções abaixo representa corretamente um comentário em HTML?",
+                "opcoes": [
+                    "// Comentário",
+                    "/* Comentário */",
+                    "<!-- Comentário -->",
+                    "# Comentário"
+                ],
+                "correta": 2
+            },
+            {
+                "id": 10,
+                "titulo": "Em JavaScript, qual estrutura é mais adequada para repetir uma ação enquanto uma condição for verdadeira?",
+                "opcoes": ["if", "switch", "while", "try"],
+                "correta": 2
+            },
+            {
+                "id": 11,
+                "titulo": "Qual propriedade CSS é utilizada para alterar a cor do texto?",
+                "opcoes": ["font-color", "text-color", "color", "foreground"],
+                "correta": 2
+            },
+            {
+                "id": 12,
+                "titulo": "Uma página deve adaptar seu layout a diferentes tamanhos de tela. Qual recurso CSS é mais apropriado?",
+                "opcoes": [
+                    "@media",
+                    "@responsive",
+                    "@viewport",
+                    "@device"
+                ],
+                "correta": 0
+            },
+            {
+                "id": 13,
+                "titulo": "Qual tag HTML é utilizada para criar um formulário?",
+                "opcoes": ["<input>", "<form>", "<fieldset>", "<label>"],
+                "correta": 1
+            },
+            {
+                "id": 14,
+                "titulo": "Qual método JavaScript converte uma string JSON em um objeto JavaScript?",
+                "opcoes": [
+                    "JSON.parse()",
+                    "JSON.stringify()",
+                    "JSON.object()",
+                    "JSON.convert()"
+                ],
+                "correta": 0
+            },
+            {
+                "id": 15,
+                "titulo": "Ao desenvolver uma aplicação web acessível, qual prática é recomendada?",
+                "opcoes": [
+                    "Usar apenas cores para transmitir informação",
+                    "Evitar textos alternativos",
+                    "Garantir navegação por teclado",
+                    "Desabilitar atalhos de navegação"
+                ],
+                "correta": 2
+            },
+            {
+                "id": 16,
+                "titulo": "Qual propriedade CSS controla o espaçamento interno de um elemento?",
+                "opcoes": ["margin", "padding", "border", "spacing"],
+                "correta": 1
+            },
+            {
+                "id": 17,
+                "titulo": "Em JavaScript, qual palavra-chave é utilizada para declarar uma constante?",
+                "opcoes": ["var", "let", "const", "static"],
+                "correta": 2
+            },
+            {
+                "id": 18,
+                "titulo": "Qual elemento HTML é mais apropriado para exibir uma lista ordenada de etapas?",
+                "opcoes": ["<ul>", "<dl>", "<ol>", "<li>"],
+                "correta": 2
+            },
+            {
+                "id": 19,
+                "titulo": "Um site apresenta problemas em dispositivos móveis. Qual meta tag é essencial para melhorar a responsividade?",
+                "opcoes": [
+                    "<meta charset='UTF-8'>",
+                    "<meta viewport='mobile'>",
+                    "<meta name='viewport' content='width=device-width, initial-scale=1.0'>",
+                    "<meta responsive='true'>"
+                ],
+                "correta": 2
+            },
+            {
+                "id": 20,
+                "titulo": "Qual prática contribui para melhorar a performance de carregamento de uma página web?",
+                "opcoes": [
+                    "Utilizar imagens otimizadas",
+                    "Adicionar mais bibliotecas JavaScript",
+                    "Inserir CSS duplicado",
+                    "Aumentar o tamanho das imagens"
+                ],
+                "correta": 0
             }
         ];
 
