@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulado de Arquitetura & DevOps</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Impedir seleção de texto para dificultar o "copiar e colar" no Google */
         .no-select {
             user-select: none;
             -webkit-user-select: none;
@@ -45,7 +44,6 @@
     </div>
 
     <script>
-        // Seu banco de dados de questões em formato JSON
         const questoesData = [
             {
                 "id": 1,
@@ -116,7 +114,7 @@
                 "opcoes": [
                     "// Comentário",
                     "/* Comentário */",
-                    "<!-- Comentário -->",
+                    "",
                     "# Comentário"
                 ],
                 "correta": 2
@@ -126,119 +124,35 @@
                 "titulo": "Em JavaScript, qual estrutura é mais adequada para repetir uma ação enquanto uma condição for verdadeira?",
                 "opcoes": ["if", "switch", "while", "try"],
                 "correta": 2
-            },
-            {
-                "id": 11,
-                "titulo": "Qual propriedade CSS é utilizada para alterar a cor do texto?",
-                "opcoes": ["font-color", "text-color", "color", "foreground"],
-                "correta": 2
-            },
-            {
-                "id": 12,
-                "titulo": "Uma página deve adaptar seu layout a diferentes tamanhos de tela. Qual recurso CSS é mais apropriado?",
-                "opcoes": [
-                    "@media",
-                    "@responsive",
-                    "@viewport",
-                    "@device"
-                ],
-                "correta": 0
-            },
-            {
-                "id": 13,
-                "titulo": "Qual tag HTML é utilizada para criar um formulário?",
-                "opcoes": ["<input>", "<form>", "<fieldset>", "<label>"],
-                "correta": 1
-            },
-            {
-                "id": 14,
-                "titulo": "Qual método JavaScript converte uma string JSON em um objeto JavaScript?",
-                "opcoes": [
-                    "JSON.parse()",
-                    "JSON.stringify()",
-                    "JSON.object()",
-                    "JSON.convert()"
-                ],
-                "correta": 0
-            },
-            {
-                "id": 15,
-                "titulo": "Ao desenvolver uma aplicação web acessível, qual prática é recomendada?",
-                "opcoes": [
-                    "Usar apenas cores para transmitir informação",
-                    "Evitar textos alternativos",
-                    "Garantir navegação por teclado",
-                    "Desabilitar atalhos de navegação"
-                ],
-                "correta": 2
-            },
-            {
-                "id": 16,
-                "titulo": "Qual propriedade CSS controla o espaçamento interno de um elemento?",
-                "opcoes": ["margin", "padding", "border", "spacing"],
-                "correta": 1
-            },
-            {
-                "id": 17,
-                "titulo": "Em JavaScript, qual palavra-chave é utilizada para declarar uma constante?",
-                "opcoes": ["var", "let", "const", "static"],
-                "correta": 2
-            },
-            {
-                "id": 18,
-                "titulo": "Qual elemento HTML é mais apropriado para exibir uma lista ordenada de etapas?",
-                "opcoes": ["<ul>", "<dl>", "<ol>", "<li>"],
-                "correta": 2
-            },
-            {
-                "id": 19,
-                "titulo": "Um site apresenta problemas em dispositivos móveis. Qual meta tag é essencial para melhorar a responsividade?",
-                "opcoes": [
-                    "<meta charset='UTF-8'>",
-                    "<meta viewport='mobile'>",
-                    "<meta name='viewport' content='width=device-width, initial-scale=1.0'>",
-                    "<meta responsive='true'>"
-                ],
-                "correta": 2
-            },
-            {
-                "id": 20,
-                "titulo": "Qual prática contribui para melhorar a performance de carregamento de uma página web?",
-                "opcoes": [
-                    "Utilizar imagens otimizadas",
-                    "Adicionar mais bibliotecas JavaScript",
-                    "Inserir CSS duplicado",
-                    "Aumentar o tamanho das imagens"
-                ],
-                "correta": 0
             }
         ];
 
-        // Função para renderizar as questões na tela
         function renderizarQuestoes() {
             const container = document.getElementById('container-questoes');
+            if (!container) return;
+            
             container.innerHTML = '';
 
             questoesData.forEach((q, qIdx) => {
-                let card = document.createElement('div');
-                card.className = "bg-white p-6 rounded-xl shadow-xs border border-gray-100";
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-xl shadow-sm border border-gray-100";
                 
                 let titulo = `<h3 class="text-lg font-semibold text-gray-900 mb-4">${qIdx + 1}. ${q.titulo}</h3>`;
                 let opcoesHtml = '<div class="space-y-3">';
-                const span = label.querySelector("span");
-                span.textContent = opcao;
 
                 q.opcoes.forEach((opcao, oIdx) => {
+                    // Escapa caracteres HTML básicos nas opções para evitar quebras com tags como <div> e <nav>
+                    const opcaoEscapada = opcao.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    
                     opcoesHtml += `
                         <label class="flex items-start p-3 rounded-lg border border-gray-200 hover:bg-indigo-50/50 hover:border-indigo-200 transition cursor-pointer">
                             <input type="radio" name="questao-${qIdx}" value="${oIdx}" required class="mt-1 h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
-                            <span class="ml-3 text-gray-700"></span>
+                            <span class="ml-3 text-gray-700">${opcaoEscapada}</span>
                         </label>
                     `;
                 });
 
                 opcoesHtml += '</div>';
-                // Div para feedback visual posterior
                 opcoesHtml += `<div id="feedback-${qIdx}" class="mt-4 hidden p-3 rounded-lg text-sm font-medium"></div>`;
                 
                 card.innerHTML = titulo + opcoesHtml;
@@ -246,7 +160,6 @@
             });
         }
 
-        // Função que processa as respostas
         function calcularResultado(event) {
             event.preventDefault();
             let acertos = 0;
@@ -254,31 +167,32 @@
             questoesData.forEach((q, qIdx) => {
                 const selecionada = document.querySelector(`input[name="questao-${qIdx}"]:checked`);
                 const feedbackDiv = document.getElementById(`feedback-${qIdx}`);
-                feedbackDiv.classList.remove('hidden');
-
-                if (selecionada && parseInt(selecionada.value) === q.correta) {
-                    acertos++;
-                    feedbackDiv.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-green-50 text-green-700 border border-green-200";
-                    feedbackDiv.innerText = "✓ Resposta correta!";
-                } else {
-                    feedbackDiv.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-red-50 text-red-700 border border-red-200";
-                    feedbackDiv.innerText = `✗ Errada. A resposta correta era: ${q.opcoes[q.correta]}`;
+                
+                if (feedbackDiv) {
+                    feedbackDiv.classList.remove('hidden');
+                    if (selecionada && parseInt(selecionada.value) === q.correta) {
+                        acertos++;
+                        feedbackDiv.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-green-50 text-green-700 border border-green-200";
+                        feedbackDiv.innerText = "✓ Resposta correta!";
+                    } else {
+                        feedbackDiv.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-red-50 text-red-700 border border-red-200";
+                        const respostaCorretaTexto = q.opcoes[q.correta].replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                        feedbackDiv.innerHTML = `✗ Errada. A resposta correta era: <strong>${respostaCorretaTexto}</strong>`;
+                    }
                 }
             });
 
-            // Exibe o Modal com a nota
             document.getElementById('nota-final').innerText = `${acertos} / ${questoesData.length}`;
             document.getElementById('modal-resultado').classList.remove('hidden');
         }
 
         function fecharModal() {
             document.getElementById('modal-resultado').classList.add('hidden');
-            // Rola a tela para o topo para ver o gabarito
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Inicializa a renderização ao carregar a página
-        window.onload = renderizarQuestoes;
+        // Garante a execução assim que o DOM estiver pronto, independente de scripts externos
+        document.addEventListener('DOMContentLoaded', renderizarQuestoes);
     </script>
 </body>
 </html>
